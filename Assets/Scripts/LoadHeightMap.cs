@@ -15,34 +15,38 @@ public class LoadHeightMap : MonoBehaviour
     [SerializeField]
     private Vector3 heightMapScale = new Vector3(1, 1, 1);
 
+    [Header("Play Mode")]
     [SerializeField]
     private bool loadHeightMap = true;
 
     [SerializeField]
     private bool flattenTerrainOnExit = true;
 
+    [Header("Edit Mode")]
     [SerializeField]
-    private bool loadHeightMapInEditMode = false;
+    private bool flattenTerrainInEditMode = true;
 
     [SerializeField]
-    private bool flattenTerrainInEditMode = false;
+    private bool loadHeighMapInEditMode = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        //terrain = this.GetComponent<Terrain>();
-        //terrainData = Terrain.activeTerrain.terrainData;
 
-        if(loadHeightMap){
+        if(terrain == null){
+            terrain = this.GetComponent<Terrain>();
+        }
+
+        if(terrainData == null){
+            terrainData = Terrain.activeTerrain.terrainData;
+        }
+
+        if(Application.IsPlaying(gameObject) && loadHeightMap){
             LoadHeightMapImage();
         }
     }
 
     void LoadHeightMapImage() {
-
-        terrain = this.GetComponent<Terrain>();
-        terrainData = Terrain.activeTerrain.terrainData;
-
 
         float[,] heightMap = new float[terrainData.heightmapResolution, terrainData.heightmapResolution];
 
@@ -68,11 +72,23 @@ public class LoadHeightMap : MonoBehaviour
         terrainData.SetHeights(0, 0, heightMap);
     }
 
-    //this method is called in editmode only
     void OnValidate() {
-        if(flattenTerrainInEditMode) {
+
+        if(terrain == null){
+            terrain = this.GetComponent<Terrain>();
+        }
+
+        if(terrainData == null){
+            terrainData = Terrain.activeTerrain.terrainData;
+        }
+
+        if (flattenTerrainInEditMode)
+        {
             FlattenTerrain();
-        } else if(loadHeightMapInEditMode){
+        }
+
+        else if (loadHeighMapInEditMode) 
+        {
             LoadHeightMapImage();
         }
     }
