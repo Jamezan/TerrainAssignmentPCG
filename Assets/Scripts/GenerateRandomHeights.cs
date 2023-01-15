@@ -76,6 +76,17 @@ public class GenerateRandomHeights : MonoBehaviour
     [SerializeField]
     private int terrainLayerIndex = 0;
 
+    [Header("Water")]
+    [SerializeField]
+    private GameObject water;
+
+    [SerializeField]
+    private float waterHeight = 0.3f;
+
+    [Header("Skybox")]
+    [SerializeField]
+    private Material newSkyBox;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -90,6 +101,9 @@ public class GenerateRandomHeights : MonoBehaviour
         GenerateHeights();
         AddTerrainTextures();
         AddTrees();
+        AddWater();
+        TurnOnFog();
+        ChangeSky();
     }
 
     private void GenerateHeights() {
@@ -253,6 +267,27 @@ public class GenerateRandomHeights : MonoBehaviour
         terrainData.treeInstances = treeInstanceList.ToArray();
     }
 
+    private void AddWater() {
+
+        GameObject waterGameObject = Instantiate(water, this.transform.position, this.transform.rotation);
+        waterGameObject.name = "Water";
+        waterGameObject.transform.position = this.transform.position + new Vector3(terrainData.size.x / 2, waterHeight * terrainData.size.y, terrainData.size.z /2);
+        waterGameObject.transform.localScale = new Vector3(terrainData.size.x, 1, terrainData.size.z);
+    }
+
+    public void TurnOnFog()
+    {
+        RenderSettings.fog = true;
+        RenderSettings.fogColor = Color.gray;
+        RenderSettings.fogMode = FogMode.Linear;
+        RenderSettings.fogDensity = 0.1f;
+        RenderSettings.fogStartDistance = 50;
+        RenderSettings.fogEndDistance = 600;
+    }
+
+    public void ChangeSky() {
+        RenderSettings.skybox = newSkyBox;
+    }
 
     void OnDestroy() {
         if(flatternTerrain) {

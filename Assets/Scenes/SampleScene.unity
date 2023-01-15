@@ -238,15 +238,24 @@ MonoBehaviour:
     minHeight: 0.8
     maxHeight: 1
   addTerrainTexture: 1
-  terrainTextureBlendOffset: 0.2
+  terrainTextureBlendOffset: 0.1
   treeData:
   - treeMesh: {fileID: 114418, guid: be878d9ea17907f4a8068678a5ce7908, type: 3}
-    minHeight: 0
+    minHeight: 0.325
     maxHeight: 0.5
-  maxTrees: 100000
-  treeSpacing: 10
+  - treeMesh: {fileID: 114418, guid: 8b2d47fdc2e25ac4f9721480a68bbefa, type: 3}
+    minHeight: 0.5
+    maxHeight: 0.7
+  - treeMesh: {fileID: 114418, guid: 9b8fc966f95ea9c4194dc091fc40b478, type: 3}
+    minHeight: 0.8
+    maxHeight: 1
+  maxTrees: 10000
+  treeSpacing: 5
   addTrees: 1
   terrainLayerIndex: 8
+  water: {fileID: 100006, guid: b544816461f324e56a39767fdeb5b114, type: 3}
+  waterHeight: 0.3
+  newSkyBox: {fileID: 2100000, guid: 81f714daf7144784b8a2f42f1cd30927, type: 2}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,8 +426,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: -0.19296098, y: 0.68008095, z: -0.19284363, w: -0.6804905}
-  m_LocalPosition: {x: 1455.5107, y: 585.67334, z: 487.24692}
+  m_LocalRotation: {x: -0.2765594, y: 0.65173835, z: -0.27755776, w: -0.649395}
+  m_LocalPosition: {x: 1144.1572, y: 591.83856, z: 492.61264}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
