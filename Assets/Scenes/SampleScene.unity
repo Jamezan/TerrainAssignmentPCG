@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 412313068}
   - component: {fileID: 412313067}
   - component: {fileID: 412313070}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,6 +239,14 @@ MonoBehaviour:
     maxHeight: 1
   addTerrainTexture: 1
   terrainTextureBlendOffset: 0.2
+  treeData:
+  - treeMesh: {fileID: 114418, guid: be878d9ea17907f4a8068678a5ce7908, type: 3}
+    minHeight: 0
+    maxHeight: 0.5
+  maxTrees: 100000
+  treeSpacing: 10
+  addTrees: 1
+  terrainLayerIndex: 8
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
